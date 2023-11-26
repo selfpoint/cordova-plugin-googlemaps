@@ -112,8 +112,7 @@
 
   This plugin works in browser application as well. One code for Android, iOS, and browsers!
   </description>
-  <repo>https://github.com/mapsplugin/cordova-plugin-googlemaps.git</repo>
-  <issue>https://github.com/mapsplugin/cordova-plugin-googlemaps/issues</issue>
+
   <author>Masashi Katsumata, Hirbod</author>
 
   <license>Apache-2.0</license>
@@ -129,9 +128,7 @@
 
   <!-- android -->
   <platform name="android">
-    <info>
-      Official document https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.6.0/README.md Please consider to buy a beer for us 🍺 https://github.com/mapsplugin/cordova-plugin-googlemaps#buy-us-a-beer
-    </info>
+
 
     <js-module name="googlemaps-cdv-plugin" src="www/plugin-loader-for-android_ios.js">
       <clobbers target="plugin.google.maps"/>
@@ -237,7 +234,7 @@
       <uses-library android:name="org.apache.http.legacy" android:required="false"/>
     </config-file>
 
-    <config-file target="AndroidManifest.xml" parent="/manifest">
+    <config-file target="AndroidManifest.xml" parent="/*">
       <uses-permission android:name="android.permission.INTERNET"/>
       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
       <!-- The following two permissions are not required to use Google Maps Android API v2, but are recommended. -->
@@ -246,8 +243,8 @@
       <!-- OpenGL ES version 2 -->
       <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
       <!-- GPS -->
-      <uses-feature android:name="android.hardware.location"/>
-      <uses-feature android:name="android.hardware.location.gps"/>
+      <uses-feature android:name="android.hardware.location" />
+      <uses-feature android:name="android.hardware.location.gps" android:required="true"/>
     </config-file>
 
     <resource-file src="src/android/res/layout/dummy_infowindow.xml" target="res/layout/dummy_infowindow.xml"/>
@@ -296,11 +293,7 @@
     <js-module name="js_CordovaGoogleMaps" src="www/js_CordovaGoogleMaps-for-android_ios.js">
       <runs/>
     </js-module>
-
-    <info>
-      Official document https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.6.0/README.md Please consider to buy a beer for us 🍺 https://github.com/mapsplugin/cordova-plugin-googlemaps#buy-us-a-beer
-    </info>
-
+ 
     <config-file target="config.xml" parent="/*">
       <feature name="CordovaGoogleMaps">
         <param name="ios-package" value="CordovaGoogleMaps"/>
@@ -470,9 +463,7 @@
 
   <!-- browser -->
   <platform name="browser">
-    <info>
-      Official document https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.6.0/README.md Please consider to buy a beer for us 🍺 https://github.com/mapsplugin/cordova-plugin-googlemaps#buy-us-a-beer
-    </info>
+ 
 
     <js-module name="googlemaps-cdv-plugin" src="www/plugin-loader-for-browser.js">
       <clobbers target="plugin.google.maps"/>
