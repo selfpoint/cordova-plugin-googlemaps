@@ -1,6 +1,6 @@
 {
   "name": "@parrino/cordova-plugin-googlemaps",
-  "version": "2.7.8",
+  "version": "2.7.12",
   "description": "Google Maps native SDK for Android and iOS, and Google Maps JavaScript API v3 for browser.",
   "cordova": {
     "id": "@parrino/cordova-plugin-googlemaps",
