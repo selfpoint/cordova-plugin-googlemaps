@@ -85,7 +85,13 @@
 
           CDVViewController *cdvViewController = (CDVViewController*)self.viewController;
           id webview = cdvViewController.webView;
-          NSURL *url = [webview URL];
+          NSString *clsName = [webview className];
+          NSURL *url;
+          if ([clsName isEqualToString:@"UIWebView"]) {
+            url = ((UIWebView *)cdvViewController.webView).request.URL;
+          } else {
+            url = [webview URL];
+          }
           NSString *webPageUrl = url.absoluteString;
           [options setObject:webPageUrl forKey:@"webPageUrl"];
           [options setObject:self.mapCtrl.overlayId forKey:@"mapId"];
@@ -120,13 +126,13 @@
         // true or default
         layer.map = self.mapCtrl.map;
       }
-      if ([json valueForKey:@"zIndex"] && [json valueForKey:@"zIndex"] != [NSNull null]) {
+      if ([json valueForKey:@"zIndex"]) {
         layer.zIndex = [[json valueForKey:@"zIndex"] floatValue];
       }
-      if ([json valueForKey:@"tileSize"] && [json valueForKey:@"tileSize"] != [NSNull null]) {
+      if ([json valueForKey:@"tileSize"]) {
         layer.tileSize = [[json valueForKey:@"tileSize"] integerValue];
       }
-      if ([json valueForKey:@"opacity"] && [json valueForKey:@"opacity"] != [NSNull null]) {
+      if ([json valueForKey:@"opacity"]) {
         layer.opacity = [[json valueForKey:@"opacity"] floatValue];
       }
 

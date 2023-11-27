@@ -69,7 +69,7 @@
 
   // Create paths of the hole property if specified.
   NSMutableArray *holePaths = [NSMutableArray array];
-  if ([json valueForKey:@"holes"] && [json valueForKey:@"holes"] != [NSNull null]) {
+  if ([json valueForKey:@"holes"]) {
       NSArray *holes = [json objectForKey:@"holes"];
       NSArray *latLngArray;
       NSDictionary *latLng;

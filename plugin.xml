@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-googlemaps" version="2.7.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-googlemaps" version="2.6.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
   <name>cordova-plugin-googlemaps</name>
   <js-module name="Promise" src="www/Promise.js" />
+  <asset src="www/promise-7.0.4.min.js.map" target="promise-7.0.4.min.js.map" />
+  <asset src="www/promise-7.0.4.min.js.map" target="plugins/cordova-plugin-googlemaps/www/promise-7.0.4.min.js.map" />
   <js-module name="BaseClass" src="www/BaseClass.js">
     <runs/>
   </js-module>
@@ -112,7 +114,8 @@
 
   This plugin works in browser application as well. One code for Android, iOS, and browsers!
   </description>
-
+  <repo>https://github.com/mapsplugin/cordova-plugin-googlemaps.git</repo>
+  <issue>https://github.com/mapsplugin/cordova-plugin-googlemaps/issues</issue>
   <author>Masashi Katsumata, Hirbod</author>
 
   <license>Apache-2.0</license>
@@ -121,6 +124,7 @@
 
   <engines>
     <engine name="cordova" version=">=7.0.0" />
+    <engine name="cordova-android" version=">=11.0.0" />
     <engine name="cordova-ios" version=">=4.5.0" />
     <engine name="apple-xcode" version=">=9.0.0" />
     <engine name="apple-ios" version=">=10.0.0" />
@@ -128,7 +132,9 @@
 
   <!-- android -->
   <platform name="android">
-
+    <info>
+      Official document https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.3.0/README.md Please consider to buy a beer for us 🍺 https://github.com/mapsplugin/cordova-plugin-googlemaps#buy-us-a-beer
+    </info>
 
     <js-module name="googlemaps-cdv-plugin" src="www/plugin-loader-for-android_ios.js">
       <clobbers target="plugin.google.maps"/>
@@ -224,7 +230,7 @@
     <resource-file src="src/android/frameworks/tbxml-android.aar" target="app/src/libs/tbxml-android.aar"/>
 
 
-    <framework src="src/android/frameworks/pgm-custom.gradle" custom="true" type="gradleReference"/>
+    <framework src="src/android/frameworks/apikey.gradle" custom="true" type="gradleReference"/>
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <meta-data android:name="com.google.android.geo.API_KEY" android:value="${GOOGLE_MAPS_ANDROID_API_KEY}"/>
@@ -250,6 +256,15 @@
     <resource-file src="src/android/res/layout/dummy_infowindow.xml" target="res/layout/dummy_infowindow.xml"/>
     <resource-file src="src/android/res/drawable/dummy_my_location_button.png" target="res/drawable/dummy_my_location_button.png"/>
     <resource-file src="src/android/res/drawable/dummy_mylocation_button_shadow.xml" target="res/drawable/dummy_mylocation_button_shadow.xml"/>
+
+    <!-- Minimum required version of Google Play Services SDK for this plugin is 12.0.1. You need to specify this version number for all other plugins that use google play services sdk. https://developers.google.com/android/guides/releases -->
+    <preference name="PLAY_SERVICES_VERSION" default="15.0.1"/>
+    <framework src="com.google.android.gms:play-services-maps:$PLAY_SERVICES_VERSION"/>
+    <framework src="com.google.android.gms:play-services-location:$PLAY_SERVICES_VERSION"/>
+
+    <!-- Minimum required version of Android Support library v4 for this plugin. https://developers.google.com/android/guides/releases -->
+    <preference name="ANDROIDX_VERSION" default="1.+" />
+    <framework src="androidx.legacy:legacy-support-v4:$ANDROIDX_VERSION" />
 
     <!-- Base messages -->
     <resource-file src="src/android/res/values/pgm_strings.xml" target="res/values/pgm_strings.xml"/>
@@ -293,7 +308,11 @@
     <js-module name="js_CordovaGoogleMaps" src="www/js_CordovaGoogleMaps-for-android_ios.js">
       <runs/>
     </js-module>
- 
+
+    <info>
+      Official document https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.3.0/README.md Please consider to buy a beer for us 🍺 https://github.com/mapsplugin/cordova-plugin-googlemaps#buy-us-a-beer
+    </info>
+
     <config-file target="config.xml" parent="/*">
       <feature name="CordovaGoogleMaps">
         <param name="ios-package" value="CordovaGoogleMaps"/>
@@ -453,17 +472,26 @@
       </array>
     </config-file>
 
-    <dependency id="com.googlemaps.ios" url="https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"  />
+    <podspec>
+      <config>
+        <source url="https://github.com/CocoaPods/Specs.git"/>
+      </config>
+      <pods>
+        <pod name="GoogleMaps" spec="~> 3.1.0"/>
+      </pods>
+    </podspec>
+    <framework src="GoogleMaps" type="podspec" spec="~> 2.7.0" />
 
-<!--
     <hook type="before_platform_add" src="src/ios/check_sdk_version.js"/>
     <hook type="before_plugin_install" src="src/ios/check_sdk_version.js"/>
--->
+
   </platform>
 
   <!-- browser -->
   <platform name="browser">
- 
+    <info>
+      Official document https://github.com/mapsplugin/cordova-plugin-googlemaps-doc/blob/master/v2.3.0/README.md Please consider to buy a beer for us 🍺 https://github.com/mapsplugin/cordova-plugin-googlemaps#buy-us-a-beer
+    </info>
 
     <js-module name="googlemaps-cdv-plugin" src="www/plugin-loader-for-browser.js">
       <clobbers target="plugin.google.maps"/>

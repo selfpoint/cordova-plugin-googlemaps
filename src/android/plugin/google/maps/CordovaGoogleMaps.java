@@ -448,16 +448,13 @@ public class CordovaGoogleMaps extends CordovaPlugin implements ViewTreeObserver
     //------------------------------------------
     JSONObject meta = args.getJSONObject(0);
     String mapId = meta.getString("__pgmId");
+
     PluginMap pluginMap = new PluginMap();
-    pluginMap.privateInitialize(mapId, cordova, webView, null);
-    pluginMap.initialize(cordova, webView);
+    PluginEntry pluginEntry = new PluginEntry(mapId, pluginMap);
+    pluginManager.addService(pluginEntry);
+
     pluginMap.mapCtrl = CordovaGoogleMaps.this;
     pluginMap.self = pluginMap;
-
-   /* TODO impide la visiblidad del mapa. para que es esto??????
-           PluginEntry pluginEntry = new PluginEntry(mapId, pluginMap);
-           pluginManager.addService(pluginEntry); */
-
     pluginMap.getMap(args, callbackContext);
   }
 
@@ -471,13 +468,11 @@ public class CordovaGoogleMaps extends CordovaPlugin implements ViewTreeObserver
     String mapId = meta.getString("__pgmId");
     Log.d(TAG, "---> mapId = " + mapId);
     PluginStreetViewPanorama pluginStreetView = new PluginStreetViewPanorama();
-    pluginStreetView.privateInitialize(mapId, cordova, webView, null);
-    pluginStreetView.initialize(cordova, webView);
+    PluginEntry pluginEntry = new PluginEntry(mapId, pluginStreetView);
+    pluginManager.addService(pluginEntry);
+
     pluginStreetView.mapCtrl = CordovaGoogleMaps.this;
     pluginStreetView.self = pluginStreetView;
-
-   /* TODO PluginEntry pluginEntry = new PluginEntry(mapId, pluginMap);
-           pluginManager.addService(pluginEntry); */
 
     pluginStreetView.getPanorama(args, callbackContext);
   }

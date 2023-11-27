@@ -65,16 +65,16 @@
     dispatch_async(dispatch_get_main_queue(), ^{
 
         GMSCircle *circle = [GMSCircle circleWithPosition:position radius:radius];
-        if ([json valueForKey:@"fillColor"] && [json valueForKey:@"fillColor"] != [NSNull null]) {
+        if ([json valueForKey:@"fillColor"]) {
             circle.fillColor = [[json valueForKey:@"fillColor"] parsePluginColor];
         }
-        if ([json valueForKey:@"strokeColor"] && [json valueForKey:@"strokeColor"] != [NSNull null]) {
+        if ([json valueForKey:@"strokeColor"]) {
             circle.strokeColor = [[json valueForKey:@"strokeColor"] parsePluginColor];
         }
-        if ([json valueForKey:@"strokeWidth"] && [json valueForKey:@"strokeWidth"] != [NSNull null]) {
+        if ([json valueForKey:@"strokeWidth"]) {
             circle.strokeWidth = [[json valueForKey:@"strokeWidth"] floatValue];
         }
-        if ([json valueForKey:@"zIndex"] && [json valueForKey:@"zIndex"] != [NSNull null]) {
+        if ([json valueForKey:@"zIndex"]) {
             circle.zIndex = [[json valueForKey:@"zIndex"] floatValue];
         }
 
@@ -86,12 +86,12 @@
           // false
           isVisible = NO;
           circle.map = nil;
-        } else {
+        } else if ( self.mapCtrl.view.class == GMSMapView.class) {
           // true or default
           circle.map = ((GMSMapView *)(self.mapCtrl.view));
         }
         BOOL isClickable = NO;
-        if ([json valueForKey:@"clickable"] != [NSNull null] && [[json valueForKey:@"clickable"] boolValue]) {
+        if ([[json valueForKey:@"clickable"] boolValue]) {
             isClickable = YES;
         }
 

@@ -51,11 +51,25 @@
         CDVViewController *cdvViewController = (CDVViewController*)self.viewController;
 
         id webview = cdvViewController.webView;
+        NSString *clsName = [webview className];
+        NSURL *url;
         NSString *currentURL;
-        NSURL *url = [webview URL];
-        currentURL = url.absoluteString;
-        if (![[url lastPathComponent] isEqualToString:@"/"]) {
+        if ([clsName isEqualToString:@"UIWebView"]) {
+          //------------------------------------------
+          // UIWebView
+          //------------------------------------------
+          url = ((UIWebView *)cdvViewController.webView).request.URL;
+          currentURL = url.absoluteString;
+
+        } else {
+          //------------------------------------------
+          // WKWebView
+          //------------------------------------------
+          NSURL *url = [webview URL];
+          currentURL = url.absoluteString;
+          if (![[url lastPathComponent] isEqualToString:@"/"]) {
             currentURL = [currentURL stringByReplacingOccurrencesOfString:[url lastPathComponent] withString:@""];
+          }
         }
         // remove page unchor (i.e index.html#page=test, index.html?key=value)
         regex = [NSRegularExpression regularExpressionWithPattern:@"[#\\?].*$" options:NSRegularExpressionCaseInsensitive error:&error];
@@ -133,14 +147,7 @@
   NSBundle *mainBundle = [NSBundle mainBundle];
   NSString *wwwPath = [mainBundle pathForResource:@"www/cordova" ofType:@"js"];
   wwwPath = [wwwPath stringByReplacingOccurrencesOfString:@"/cordova.js" withString:@""];
-
-  // urlStr = [urlStr stringByReplacingOccurrencesOfString:wwwPath withString: @""];
-  
-  // ionic 4
   urlStr = [urlStr stringByReplacingOccurrencesOfString:@"http://localhost:8080" withString: wwwPath];
-  
-  // ionic 5
-  urlStr = [urlStr stringByReplacingOccurrencesOfString:@"ionic://localhost" withString: wwwPath];
   
   
   if ([urlStr hasPrefix:@"http://"] || [urlStr hasPrefix:@"https://"]) {
@@ -160,7 +167,7 @@
                                                           completionBlock(NO, error);
                                                           return;
                                                        }
-                                     
+                                                       
                                                         TBXML *tbxml = [TBXML alloc];
                                                         tbxml = [tbxml initWithXMLData:data error:&error];
                                                         NSDictionary *result = [self parseXmlWithTbXml:tbxml];
@@ -213,9 +220,6 @@
 -(NSMutableDictionary *)parseXml:(TBXML *)tbxml rootElement:(TBXMLElement *)rootElement
 {
 
-  if (rootElement == nil) {
-    return nil;
-  }
   NSMutableDictionary *result = [NSMutableDictionary dictionary];
   NSString *tagName = [[TBXML elementName:rootElement] lowercaseString];
   NSString *styleId, *schemaId, *txt;
