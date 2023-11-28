@@ -2,10 +2,10 @@
 
 
 var utils = require('cordova/utils'),
-  event = require('cordova-plugin-googlemaps.event'),
-  BaseClass = require('cordova-plugin-googlemaps.BaseClass'),
-  LatLng = require('cordova-plugin-googlemaps.LatLng'),
-  MapTypeId = require('cordova-plugin-googlemaps.MapTypeId');
+  event = require('@parrino/cordova-plugin-googlemaps.event'),
+  BaseClass = require('@parrino/cordova-plugin-googlemaps.BaseClass'),
+  LatLng = require('@parrino/cordova-plugin-googlemaps.LatLng'),
+  MapTypeId = require('@parrino/cordova-plugin-googlemaps.MapTypeId');
 
 var MAP_TYPES = {};
 MAP_TYPES[MapTypeId.NORMAL] = 'roadmap';
@@ -701,7 +701,7 @@ PluginMap.prototype.loadPlugin = function(onSuccess, onError, args) {
   if (className in self.PLUGINS) {
     plugin = self.PLUGINS[className];
   } else {
-    var OverlayClass = require('cordova-plugin-googlemaps.Plugin' + className);
+    var OverlayClass = require('@parrino/cordova-plugin-googlemaps.Plugin' + className);
     plugin = new OverlayClass(this);
     self.PLUGINS[className] = plugin;
 

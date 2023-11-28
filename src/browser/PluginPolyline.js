@@ -1,8 +1,8 @@
 
 
 var utils = require('cordova/utils'),
-  event = require('cordova-plugin-googlemaps.event'),
-  BaseClass = require('cordova-plugin-googlemaps.BaseClass');
+  event = require('@parrino/cordova-plugin-googlemaps.event'),
+  BaseClass = require('@parrino/cordova-plugin-googlemaps.BaseClass');
 
 function PluginPolyline(pluginMap) {
   var self = this;

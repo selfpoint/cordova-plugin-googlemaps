@@ -1,10 +1,10 @@
 
 
 
-var PluginMap = require('cordova-plugin-googlemaps.PluginMap'),
-  PluginStreetViewPanorama = require('cordova-plugin-googlemaps.PluginStreetViewPanorama'),
-  event = require('cordova-plugin-googlemaps.event'),
-  Environment = require('cordova-plugin-googlemaps.PluginEnvironment');
+var PluginMap = require('@parrino/cordova-plugin-googlemaps.PluginMap'),
+  PluginStreetViewPanorama = require('@parrino/cordova-plugin-googlemaps.PluginStreetViewPanorama'),
+  event = require('@parrino/cordova-plugin-googlemaps.event'),
+  Environment = require('@parrino/cordova-plugin-googlemaps.PluginEnvironment');
 
 var MAPS = {};
 

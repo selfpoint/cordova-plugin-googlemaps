@@ -2,10 +2,10 @@
 
 
 var utils = require('cordova/utils'),
-  event = require('cordova-plugin-googlemaps.event'),
-  BaseClass = require('cordova-plugin-googlemaps.BaseClass'),
-  Spherical = require('cordova-plugin-googlemaps.spherical'),
-  LatLng = require('cordova-plugin-googlemaps.LatLng');
+  event = require('@parrino/cordova-plugin-googlemaps.event'),
+  BaseClass = require('@parrino/cordova-plugin-googlemaps.BaseClass'),
+  Spherical = require('@parrino/cordova-plugin-googlemaps.spherical'),
+  LatLng = require('@parrino/cordova-plugin-googlemaps.LatLng');
 
 function PluginGroundOverlay(pluginMap) {
   var self = this;

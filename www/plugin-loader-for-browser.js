@@ -1,7 +1,7 @@
-var event = require('cordova-plugin-googlemaps.event'),
-  BaseClass = require('cordova-plugin-googlemaps.BaseClass'),
-  BaseArrayClass = require('cordova-plugin-googlemaps.BaseArrayClass'),
-  execCmd = require('cordova-plugin-googlemaps.commandQueueExecutor'),
+var event = require('@parrino/cordova-plugin-googlemaps.event'),
+  BaseClass = require('@parrino/cordova-plugin-googlemaps.BaseClass'),
+  BaseArrayClass = require('@parrino/cordova-plugin-googlemaps.BaseArrayClass'),
+  execCmd = require('@parrino/cordova-plugin-googlemaps.commandQueueExecutor'),
   cordovaGoogleMaps = new(require('cordova-plugin-googlemaps.js_CordovaGoogleMaps'))(execCmd);
 
 module.exports = {
@@ -22,17 +22,17 @@ module.exports = {
       OUTDOOR: 'OUTDOOR'
     }
   },
-  HtmlInfoWindow: require('cordova-plugin-googlemaps.HtmlInfoWindow'),
-  LatLng: require('cordova-plugin-googlemaps.LatLng'),
-  LatLngBounds: require('cordova-plugin-googlemaps.LatLngBounds'),
-  MapTypeId: require('cordova-plugin-googlemaps.MapTypeId'),
-  environment: require('cordova-plugin-googlemaps.Environment'),
-  Geocoder: require('cordova-plugin-googlemaps.Geocoder')(execCmd),
-  LocationService: require('cordova-plugin-googlemaps.LocationService')(execCmd),
+  HtmlInfoWindow: require('@parrino/cordova-plugin-googlemaps.HtmlInfoWindow'),
+  LatLng: require('@parrino/cordova-plugin-googlemaps.LatLng'),
+  LatLngBounds: require('@parrino/cordova-plugin-googlemaps.LatLngBounds'),
+  MapTypeId: require('@parrino/cordova-plugin-googlemaps.MapTypeId'),
+  environment: require('@parrino/cordova-plugin-googlemaps.Environment'),
+  Geocoder: require('@parrino/cordova-plugin-googlemaps.Geocoder')(execCmd),
+  LocationService: require('@parrino/cordova-plugin-googlemaps.LocationService')(execCmd),
   geometry: {
-    encoding: require('cordova-plugin-googlemaps.encoding'),
-    spherical: require('cordova-plugin-googlemaps.spherical'),
-    poly: require('cordova-plugin-googlemaps.poly')
+    encoding: require('@parrino/cordova-plugin-googlemaps.encoding'),
+    spherical: require('@parrino/cordova-plugin-googlemaps.spherical'),
+    poly: require('@parrino/cordova-plugin-googlemaps.poly')
   }
 };
 

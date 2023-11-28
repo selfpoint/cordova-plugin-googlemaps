@@ -1,7 +1,7 @@
 
 /* eslint no-useless-escape: off */
 
-var InlineWorker = require('cordova-plugin-googlemaps.InlineWorker');
+var InlineWorker = require('@parrino/cordova-plugin-googlemaps.InlineWorker');
 
 function PluginKmlOverlay() {
   // stub

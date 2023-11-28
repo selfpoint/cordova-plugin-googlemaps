@@ -1,6 +1,6 @@
 
 
-var BaseArrayClass = require('cordova-plugin-googlemaps.BaseArrayClass');
+var BaseArrayClass = require('@parrino/cordova-plugin-googlemaps.BaseArrayClass');
 
 var geocoder = null;
 var lastRequestTime = 0;
